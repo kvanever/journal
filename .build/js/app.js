@@ -12,18 +12,39 @@ Entry.prototype.wordCount = function() {
   return this.body.split(' ').length;
 };
 
+Entry.prototype.vowels = function() {
+  // var count = 0
+  return this.body.split(/[aeiou]/i).length - 1;
+};
+
+Entry.prototype.consonants = function() {
+  return this.body.length - this.vowels() - this.wordCount() + 1;
+};
+
+Entry.prototype.teaser = function() {
+  wordarray = [];
+  debugger;
+  var array = this.body.split(' ');
+  for (i = 0; i <= 7; i++) {
+    debugger;
+    wordarray.push(array[i]);
+    if(array[i].slice(-1) === ".") {
+      return wordarray.join(" ");
+    }
+  }
+  return wordarray.join(" ");
+};
 exports.entryModule = Entry;
 
 },{}],2:[function(require,module,exports){
 var Entry = require('./../js/entry-model.js').entryModule;
+var entries = [];
 
 $(document).ready(function() {
   $("#entry").submit(function(event){
     event.preventDefault();
-    debugger;
     var title = ($("input#title").val());
-    var body = ($("input#body").val());
-    var entries = [];
+    var body = ($("textarea#body").val());
     var entry = new Entry(title, body);
     entry.addNew(entries);
 
@@ -32,6 +53,11 @@ $(document).ready(function() {
       entries.forEach(function(entry) {
       $('ul#output').append("<li>" + entry.title + " </li>");
       $('ul#output').append("<li>" + entry.body + " </li>");
+      $('ul#output').append("<li>" + entry.wordCount() + " </li>");
+      $('ul#output').append("<li>" + entry.vowels() + " </li>");
+      $('ul#output').append("<li>" + entry.consonants() + " </li>");
+      $('ul#output').append("<li>" + entry.teaser() + " </li>");
+      debugger;
       });
     } else {
       alert("Please enter a journal entry");

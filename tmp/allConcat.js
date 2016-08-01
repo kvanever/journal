@@ -1,23 +1,23 @@
 var Entry = require('./../js/entry-model.js').entryModule;
 
 $(document).ready(function() {
-  $("#title").submit(function(event){
+  $("#entry").submit(function(event){
     event.preventDefault();
-
-    var title = parseString($("input#title").val());
-    var body = parseString($("input#body").val());
+    debugger;
+    var title = ($("input#title").val());
+    var body = ($("input#body").val());
     var entries = [];
     var entry = new Entry(title, body);
-    entry.addNew()
+    entry.addNew(entries);
 
     $('ul#output').html("");
     if (entries) {
       entries.forEach(function(entry) {
-      $('ul#output').append("<li>" + entries.title + " </li>");
-      $('ul#output').append("<li>" + entries.body + " </li>");
+      $('ul#output').append("<li>" + entry.title + " </li>");
+      $('ul#output').append("<li>" + entry.body + " </li>");
       });
     } else {
-      alert("Please enter a journal entry")
+      alert("Please enter a journal entry");
     }
   });
 });

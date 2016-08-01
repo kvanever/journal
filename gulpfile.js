@@ -1,12 +1,16 @@
 var gulp = require('gulp');
+var fs = require('fs');
 var browserify = require('browserify')
+var watchify = require('watchify');
 var source = require('vinyl-source-stream')
 var concat = require('gulp-concat')
 var uglify = require('gulp-uglify');
 var utilities = require('gulp-util');
 var del = require('del');
+var browserSync = require('browser-sync').create();
 var jshint = require('gulp-jshint');
 var buildProduction = utilities.env.production;
+
 
 
 gulp.task('concatInterface', function() {
@@ -39,6 +43,34 @@ gulp.task("build", ['clean'], function(){
     gulp.start('jsBrowserify');
   }
 });
+
+gulp.task('jsBuild', ['jsBrowserify', 'jshint'], function(){
+  browserSync.reload();
+});
+
+gulp.task('bowerBuild', ['bower'], function(){
+  browserSync.reload();
+});
+
+gulp.task('htmlBuild', function() {
+  browserSync.reload();
+});
+
+gulp.task('serve', function() {
+  browserSync.init({
+    server: {
+      baseDir: "./",
+      index: "index.html"
+    }
+  });
+
+  gulp.watch(['js/*.js'], ['jsBuild']);
+  gulp.watch(['bower.json'], ['bowerBuild']);
+  gulp.watch(['*.html'], ['htmlBuild']);
+});
+
+
+
 
 gulp.task('jshint', function(){
   return gulp.src(['js/*.js'])

@@ -22,10 +22,8 @@ Entry.prototype.consonants = function() {
 
 Entry.prototype.teaser = function() {
   wordarray = [];
-  debugger;
   var array = this.body.split(' ');
   for (i = 0; i <= 7; i++) {
-    debugger;
     wordarray.push(array[i]);
     if(array[i].slice(-1) === ".") {
       return wordarray.join(" ");

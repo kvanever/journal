@@ -18,7 +18,14 @@ $(document).ready(function() {
       $('ul#output').append("<li>" + entry.vowels() + " </li>");
       $('ul#output').append("<li>" + entry.consonants() + " </li>");
       $('ul#output').append("<li>" + entry.teaser() + " </li>");
-      debugger;
+      $('ul#output').append("<li>" + entry.teaser() + " </li>");
+      $('ul#output').append("<li>" + entry.teaser() + " </li>");
+      $('ul#output').append("<li>" + entry.teaser() + " </li>");
+      $('ul#output').append("<li>" + entry.teaser() + " </li>");
+      $('ul#output').append("<li>" + entry.teaser() + " </li>");
+      $('ul#output').append("<li>" + entry.teaser() + " </li>");
+      $('ul#output').append("<li>" + entry.teaser() + " </li>");
+      $('ul#output').append("<li>" + entry.teaser() + " </li>");
       });
     } else {
       alert("Please enter a journal entry");

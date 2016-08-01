@@ -1,16 +1,21 @@
 {
-  "name": "journal",
+  "name": "entry",
   "version": "1.0.0",
-  "description": "test journal",
-  "main": "index.js",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.7",
+    "vinyl-source-stream": "^1.1.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "browserify": "^13.1.0",
-    "gulp": "^3.9.1",
-    "vinyl-source-stream": "^1.1.0"
-  }
+  "license": "ISC"
 }
